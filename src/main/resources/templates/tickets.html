@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>All Tickets</title>
+</head>
+<body>
+<h2>All Tickets</h2>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Subject</th>
+        <th>Description</th>
+        <th>Email</th>
+        <th>Status</th>
+    </tr>
+    <tr th:each="ticket : ${tickets}">
+        <td th:text="${ticket.id}"></td>
+        <td th:text="${ticket.subject}"></td>
+        <td th:text="${ticket.description}"></td>
+        <td th:text="${ticket.email}"></td>
+        <td th:text="${ticket.status}"></td>
+    </tr>
+</table>
+<a href="/add-ticket">Add New Ticket</a>
+</body>
+</html>
