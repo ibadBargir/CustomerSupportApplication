@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Ticket</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            margin: 40px;
+        }
+        h2 {
+            color: #333;
+            text-align: center;
+        }
+        form {
+            background: #fff;
+            padding: 20px;
+            max-width: 500px;
+            margin: 0 auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            color: #333;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin-top: 15px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .back-link {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Edit Ticket</h2>
+
+<form th:action="@{/admin/ticket/update}" method="post" th:object="${ticket}">
+    <input type="hidden" th:field="*{id}" />
+
+    <label>Subject:</label>
+    <input type="text" th:field="*{subject}" placeholder="Enter subject" required />
+
+    <label>Description:</label>
+    <textarea th:field="*{description}" placeholder="Enter issue details" required></textarea>
+
+    <label>Email:</label>
+    <input type="email" th:field="*{email}" placeholder="Customer email" required />
+
+    <label>Status:</label>
+    <select th:field="*{status}">
+        <option value="OPEN">OPEN</option>
+        <option value="IN_PROGRESS">IN_PROGRESS</option>
+        <option value="RESOLVED">RESOLVED</option>
+        <option value="CLOSED">CLOSED</option>
+    </select>
+
+    <button type="submit">Update Ticket</button>
+</form>
+
+<a href="/admin/dashboard" class="back-link">← Back to Dashboard</a>
+
+</body>
+</html>
